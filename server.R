@@ -34,7 +34,7 @@ server<-function(input,output,session){
   speed.years <- max(tv.streaming.data$release_year) - max.speed.years
   
   
-  # Create summary table
+  # Create summary table -----------------------------------------------------------------------------------------
   best.option.dt <- reactive({
     
     data.table::setDT(filtered.dt())
@@ -68,7 +68,7 @@ server<-function(input,output,session){
         
       }
     }
-
+    
     
     return.data <- data.table::copy(data)
     
@@ -88,6 +88,90 @@ server<-function(input,output,session){
       DT::formatStyle('Rotten Tomatoes Rating', backgroundColor = DT::styleEqual(max(best.option.dt()$'Rotten Tomatoes Rating', na.rm = TRUE), "mediumseagreen"))
     
   })
+  
+  
+  
+  # Create histograms -----------------------------------------------------------------------------------------
+  
+  output$countbystream <- renderPlot({
+    
+    
+    ggplot2::ggplot(filtered.dt()[ !is.na(year_added)], ggplot2::aes(x = as.character(year_added), fill = as.factor(streaming_platform))) +
+      ggplot2::geom_histogram( stat="count", position = "identity", alpha = 0.4, bins = 50) +
+      theme(legend.title=element_blank(),
+            axis.title.x=element_blank()) 
+    #+ theme_classic()
+    
+    
+  })
+  
+  
+  
+  original.percentage.dt <- reactive({
+    
+    data.table::setDT(filtered.dt())
+    
+    
+    data <- data.table::data.table(
+      streaming_platform = character(),
+      original_percentage = numeric()
+    ) 
+    
+    selected.platforms <- unique(filtered.dt()$streaming_platform)
+    
+    
+    # Add platform information if exists
+    for(platform in unique(tv.streaming.data$streaming_platform)) {
+      
+      if(platform %in% selected.platforms) {
+        
+        new.row <- data.table::data.table(
+          streaming_platform = platform,
+          original_percentage = round((nrow(filtered.dt()[streaming_platform == platform & !is.na(is_self_production) & is_self_production == 1])/nrow(filtered.dt()[streaming_platform == platform & !is.na(is_self_production)]))*100,2)
+        )
+        
+        data <- data.table::copy(rbind(data, new.row))
+        
+      }
+    }
+    
+    
+    return.data <- data.table::copy(data)
+    
+  })
+  
+  
+  output$original <- renderPlot({
+    
+    ggplot(original.percentage.dt(), aes(x=streaming_platform, y=original_percentage)) + 
+      geom_bar(stat = "identity", fill="#79CDCD") +
+    theme(axis.title.x=element_blank()) +
+      labs(y="%")
+    
+    
+  })
+  
+  
+
+  
+  output$original_evolution <- renderPlot({
+    
+    data <- data.table::copy(filtered.dt()[!is.na(is_self_production), .(original_anual_percentage = round(sum(is_self_production)/.N*100),2),
+                                                       by = c("streaming_platform", "year_added")])
+    
+    ggplot2::ggplot(data, aes(x=year_added, y=original_anual_percentage, fill =as.factor(streaming_platform))) + 
+      ggplot2::geom_bar(stat = "identity", position = "identity", alpha = 0.4) +
+      ggplot2::theme(axis.title.x=element_blank(),
+            legend.title=element_blank()) +
+      ggplot2::labs(y="%")
+    
+    
+  })
+  
+  
+  
+  
+  
   
   
 }

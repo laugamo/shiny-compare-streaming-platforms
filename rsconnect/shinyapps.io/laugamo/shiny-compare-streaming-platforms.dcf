@@ -5,7 +5,7 @@ account: laugamo
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8098816
-bundleId: 6762797
+bundleId: 6765531
 url: https://laugamo.shinyapps.io/shiny-compare-streaming-platforms/
-when: 1674460620.94347
-lastSyncTime: 1674460620.94447
+when: 1674505900.80309
+lastSyncTime: 1674505900.80309

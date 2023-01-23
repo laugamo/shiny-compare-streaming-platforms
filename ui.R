@@ -38,6 +38,7 @@ ui <-function(){
                                                 
   )
   
+
   
   # 2. SIDEBAR: Item for having a left sidebar and items on a menu to navigate -----------------------------------------------
   sidebar <- shinydashboard::dashboardSidebar(UiLandingPage()$sidebarmenu,
