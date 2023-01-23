@@ -40,11 +40,11 @@ UiLandingPage<-function(){
                             #                                          height = "300px"))
                             fluidRow(
                               # Item for holding plot
-                              shinydashboard::box(title = "",
-                                                  plotOutput(outputId = "forecast_plot",
-                                                             width = "auto",
-                                                             height = "300px"),
-                                                  width = "11")
+                              # shinydashboard::box(title = "",
+                              #                     plotOutput(outputId = "forecast_plot",
+                              #                                width = "auto",
+                              #                                height = "300px"),
+                              #                     width = "11")
                             )
                             
                             #)

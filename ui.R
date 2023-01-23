@@ -12,23 +12,24 @@ library(shinydashboard)
 library(data.table)
 library(ggplot2)
 library(shiny)
-library(shinyBS)
 library(plotly)
 library(tidyverse)
 library(devtools)
 library(RColorBrewer)
 library(mltools)
 library(formattable)
-
-library(ggcorrplot)
-library(htmlTable)
-library(arsenal)
 library(dplyr)
-library(knitr)
-library(shinyFiles)
+# library(htmlTable)
+# library(arsenal)
+# library(knitr)
+# library(shinyFiles)
 
-ShinyUi <-function(){
+## load functions
+
+
+ui <-function(){
   
+  source('compare_TVdata_shiny_ui_LandingPage.R')
   
   # 1. HEADRER: Item for total dashboard header, option for right side bar ---------------------------------------------------
   header <- shinydashboardPlus::dashboardHeader(title = "Which streaming service should I get?",

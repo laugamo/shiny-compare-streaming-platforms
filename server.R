@@ -12,7 +12,8 @@
 #' @examples
 
 
-ServerLandingPage<-function(input,output,session){
+#ServerLandingPage<-function(input,output,session){
+server<-function(input,output,session){
   
   
   
