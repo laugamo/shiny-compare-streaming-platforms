@@ -6,6 +6,27 @@
 #' @include shiny_server.R  shiny_ui_landingpage.R
 #'
 #' @examples
+
+
+library(shinydashboard)
+library(data.table)
+library(ggplot2)
+library(shiny)
+library(shinyBS)
+library(plotly)
+library(tidyverse)
+library(devtools)
+library(RColorBrewer)
+library(mltools)
+library(formattable)
+
+library(ggcorrplot)
+library(htmlTable)
+library(arsenal)
+library(dplyr)
+library(knitr)
+library(shinyFiles)
+
 ShinyUi <-function(){
   
   

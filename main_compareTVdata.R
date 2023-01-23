@@ -72,7 +72,7 @@ options(scipen = 999)
 
 
 ## Get data ---------------------------------
-path = "C:/Users/Laura/OneDrive/Documentos/LAURA/KNOWLEDGE/MASTER/UOC/13 - Visualització de dades/Practica2/1 - Enunciat/Final_dataset_used"
+path = "C:/Users/Laura/OneDrive/Documentos/LAURA/KNOWLEDGE/MASTER/UOC/13 - Visualització de dades/Practica2/2 - Lliurament/shiny-compare-platforms/Final_dataset_used"
 setwd(path)
 
 

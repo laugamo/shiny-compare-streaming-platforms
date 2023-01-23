@@ -11,7 +11,6 @@ UiLandingPage<-function(){
     shinydashboard::sidebarMenu(id = "tabs",
                                 shinydashboard::menuItem(text = "SELECT YOUR PREFERENCES:",
                                                          tabName = "landingpagetab"
-                                                         #icon = shiny::icon("tv")
                                 ))
   
   # Item for content of tab

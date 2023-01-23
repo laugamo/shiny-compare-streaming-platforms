@@ -17,7 +17,7 @@ ServerLandingPage<-function(input,output,session){
   
   
   # Get data
-  tv.streaming.data <- readRDS("C:/Users/Laura/OneDrive/Documentos/LAURA/KNOWLEDGE/MASTER/UOC/13 - Visualització de dades/Practica2/1 - Enunciat/Final_dataset_used/final_data.rds")
+  tv.streaming.data <- readRDS("final_data.rds")
   
   
   filtered.dt <- shiny::callModule(
